@@ -3,6 +3,7 @@ import Login from '../containers/Login';
 import Signup from "../containers/Signup";
 import Profile from '../containers/Profile';
 import Chat from '../containers/Chat'
+import Group from '../containers/Group'
 import { onAuthStateChanged, auth } from './Firebase';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -68,6 +69,7 @@ function AppRouter() {
                 <PublicRoute auth={isAuth} exact path="/signup" component={Signup} />
                 <PrivateRoute auth={isAuth} exact path="/profile/:id" component={Profile} />
                 <PrivateRoute auth={isAuth} exact path="/chat/:uid" component={Chat} />
+                <PrivateRoute auth={isAuth} exact path="/group/:uid" component={Group} />
             </Switch>
         </Router>
     )

@@ -1,15 +1,15 @@
 import MenuAppBar from '../../components/AppBar'
-import { useLocation, useParams, Link } from 'react-router-dom';
+import { useLocation, useParams ,Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import './style.css';
+import '../Chat/style.css';
 import { BiSearchAlt, BiPhoneCall } from 'react-icons/bi';
-import {  RiContactsBookLine, RiArchiveDrawerLine } from 'react-icons/ri';
+import { RiContactsBookLine, RiArchiveDrawerLine } from 'react-icons/ri';
 import { FiUsers, FiSend } from 'react-icons/fi';
 import { MdVideoCall } from 'react-icons/md';
 import { FaRegSmile } from 'react-icons/fa';
 import {BsFillChatFill} from 'react-icons/bs';
 import { db, doc, getDocs, collection, query, where, setDoc, onSnapshot, addDoc, orderBy } from '../../config/Firebase'
-function Chat(props) {
+function Group(props) {
     const location = useLocation()
     const { uid } = useParams()
     const [users, setUsers] = useState([]);
@@ -72,7 +72,7 @@ function Chat(props) {
     }
     return (
         <div>
-            <MenuAppBar title="Chat" />
+            <MenuAppBar title="Group chat" />
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-3">
@@ -94,6 +94,7 @@ function Chat(props) {
                                 <RiArchiveDrawerLine color="#fff" size={24} />
                             </div>
                             <div className="users_list">
+                                <button> Add Group </button>
                                 {
                                     users.map((v, i) => {
                                         return (
@@ -181,4 +182,4 @@ function Chat(props) {
     )
 }
 
-export default Chat;
+export default Group;

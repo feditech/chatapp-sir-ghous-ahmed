@@ -1,8 +1,4 @@
 import MenuAppBar from '../../components/AppBar'
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import MyCard from '../../components/Card';
-import Button from '@mui/material/Button';
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import COVER from '../../assets/images/cover.png';
@@ -47,6 +43,8 @@ function Profile() {
                         <h6>{email}</h6>
                     </div>
                     <Link to={`/chat/${id}`}>Chat</Link>
+                    <br />
+                    <Link to= '/group'>Group </Link>
                 </div>
             </div>
         </div>
