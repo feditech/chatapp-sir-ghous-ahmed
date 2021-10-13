@@ -10,7 +10,6 @@ import { FaRegSmile } from 'react-icons/fa';
 import {BsFillChatFill} from 'react-icons/bs';
 import { db, doc, getDocs, collection, query, where, setDoc, onSnapshot, addDoc, orderBy } from '../../config/Firebase'
 function Chat(props) {
-    const location = useLocation()
     const { uid } = useParams()
     const [users, setUsers] = useState([]);
     const [currentChat, setCurrentChat] = useState({});
@@ -96,6 +95,7 @@ function Chat(props) {
                             <div className="users_list">
                                 {
                                     users.map((v, i) => {
+                                        console.log(v);
                                         return (
                                             <div onClick={() => setCurrentChat(users[i])} key={i} className="user_card">
                                                 <div className="user_card_pic">
@@ -103,7 +103,7 @@ function Chat(props) {
                                                 </div>
                                                 <div className="user_data">
                                                     <h6>{v.fullName}</h6>
-                                                    <span>Hi,how are you?</span>
+                                                    <span></span>
                                                 </div>
                                                 <div className="my_badge">
                                                     <span>2</span>
