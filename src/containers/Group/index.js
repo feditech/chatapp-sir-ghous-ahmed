@@ -10,9 +10,17 @@ import { FiUsers, FiSend } from 'react-icons/fi';
 import { MdVideoCall } from 'react-icons/md';
 import { FaRegSmile } from 'react-icons/fa';
 import { BsFillChatFill } from 'react-icons/bs';
-import { Button } from 'react-bootstrap'
-import { Modal } from 'react-modal'
+
 import { db, doc, getDocs, collection, query, where, setDoc, onSnapshot, addDoc, orderBy } from '../../config/Firebase'
+
+
+
+
+
+
+
+
+
 function Group(props) {
     const location = useLocation()
     const { uid } = useParams()
@@ -20,6 +28,8 @@ function Group(props) {
     const [currentChat, setCurrentChat] = useState({});
     const [message, setMessage] = useState("")
     const [allMessages, setAllMessage] = useState([])
+
+
     const getAllUsers = async () => {
         const docRef = query(collection(db, "users"), where("uid", '!=', uid));
         const querySnapshot = await getDocs(docRef);
@@ -76,6 +86,7 @@ function Group(props) {
     }
     return (
         <div>
+            
             <MenuAppBar title="Group chat" />
             <div className="container-fluid">
                 <div className="row">
@@ -98,9 +109,10 @@ function Group(props) {
                                 <RiArchiveDrawerLine color="#fff" size={24} />
                             </div>
                             <div className="users_list">
-                                <button className="addgroupbtn" > Add Group  </button>
+                                <button className="addgroupbtn" > <Modal1 userid= {uid} />  </button>
                                 {
                                     users.map((v, i) => {
+                                        
                                         return (
                                             <div onClick={() => setCurrentChat(users[i])} key={i} className="user_card">
                                                 <div className="user_card_pic">
@@ -184,53 +196,5 @@ function Group(props) {
             </div>
         </div>
     )
-}
-
-
-
-
-function Example() {
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    return (
-        <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
-
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    }
 export default Group;
