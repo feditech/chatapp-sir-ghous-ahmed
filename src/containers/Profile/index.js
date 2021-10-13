@@ -44,7 +44,7 @@ function Profile() {
                     </div>
                     <Link to={`/chat/${id}`}>Chat</Link>
                     <br />
-                    <Link to= '/group'>Group </Link>
+                    
                 </div>
             </div>
         </div>

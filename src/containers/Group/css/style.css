@@ -1,0 +1,11 @@
+.addgroupbtn{
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 100px;
+    color: white;
+    font-size: large;
+    background-color: rgb(53, 53, 230);
+    border: none;
+    text-align: center;
+    vertical-align: center;
+}
