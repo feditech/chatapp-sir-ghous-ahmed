@@ -1,5 +1,7 @@
 import MenuAppBar from '../../components/AppBar'
-import { useLocation, useParams ,Link } from 'react-router-dom';
+import Modal1 from '../../components/Modal'
+import './css/style.css'
+import { useLocation, useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../Chat/style.css';
 import { BiSearchAlt, BiPhoneCall } from 'react-icons/bi';
@@ -7,7 +9,9 @@ import { RiContactsBookLine, RiArchiveDrawerLine } from 'react-icons/ri';
 import { FiUsers, FiSend } from 'react-icons/fi';
 import { MdVideoCall } from 'react-icons/md';
 import { FaRegSmile } from 'react-icons/fa';
-import {BsFillChatFill} from 'react-icons/bs';
+import { BsFillChatFill } from 'react-icons/bs';
+import { Button } from 'react-bootstrap'
+import { Modal } from 'react-modal'
 import { db, doc, getDocs, collection, query, where, setDoc, onSnapshot, addDoc, orderBy } from '../../config/Firebase'
 function Group(props) {
     const location = useLocation()
@@ -84,17 +88,17 @@ function Group(props) {
                                 </div>
                             </div>
                             <div className="icons">
-                            <Link to={`/chat/${uid}`}>
-                            <BsFillChatFill color="#fff" size={24} />
-                            </Link>
-                            <Link to={`/group/${uid}`}>
-                            <FiUsers color="#fff" size={24} />
-                                </Link> 
+                                <Link to={`/chat/${uid}`}>
+                                    <BsFillChatFill color="#fff" size={24} />
+                                </Link>
+                                <Link to={`/group/${uid}`}>
+                                    <FiUsers color="#fff" size={24} />
+                                </Link>
                                 <RiContactsBookLine color="#fff" size={24} />
                                 <RiArchiveDrawerLine color="#fff" size={24} />
                             </div>
                             <div className="users_list">
-                                <button> Add Group </button>
+                                <button className="addgroupbtn" > Add Group  </button>
                                 {
                                     users.map((v, i) => {
                                         return (
@@ -181,5 +185,52 @@ function Group(props) {
         </div>
     )
 }
+
+
+
+
+function Example() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+        <>
+            <Button variant="primary" onClick={handleShow}>
+                Launch demo modal
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default Group;
